@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Liq
  * @date 2020/5/26
  */
+
 public class AtomicIntegerDemo {
 
     private static AtomicInteger atomicInteger = new AtomicInteger();
