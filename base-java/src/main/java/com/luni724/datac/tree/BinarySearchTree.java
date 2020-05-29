@@ -100,6 +100,15 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements TreeOp
         return findMin(root.getLeft());
     }
 
+    private TreeNode<T> findMax2(TreeNode<T> root) {
+        if (root == null) {
+            return null;
+        } else if (root.getRight() ==null) {
+            return root;
+        }
+        return findMax2(root.getRight());
+    }
+
     /**
      * 查找最小节点，非递归实现
      * @param root
@@ -155,6 +164,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements TreeOp
         } else if (compareTo > 0) {
             return contains(element,root.getRight());
         }
+        // match
         return true;
     }
 

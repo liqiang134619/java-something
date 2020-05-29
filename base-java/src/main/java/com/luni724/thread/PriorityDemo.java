@@ -21,10 +21,10 @@ public class PriorityDemo {
                         System.out.println("hightPriority complete");
                         break;
                     }
-
                 }
             }
         });
+
         Thread lowerPriorityComplete = new Thread(() -> {
             while (true) {
                 synchronized (PriorityDemo.class) {
@@ -33,7 +33,6 @@ public class PriorityDemo {
                         System.out.println("lowerPriority complete");
                         break;
                     }
-
                 }
             }
         });
