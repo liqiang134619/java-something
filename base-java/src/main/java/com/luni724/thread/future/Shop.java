@@ -71,6 +71,13 @@ public class Shop {
         return calculatePrice(product);
     }
 
+    public String getPrice2(String product) {
+        Random random = new Random();
+        double v = calculatePrice(product);
+        DisCount.Code code = DisCount.Code.values()[random.nextInt(DisCount.Code.values().length)];
+        return String.format("%s:%.2f:%s",name,v,code);
+    }
+
     private double calculatePrice(String product) {
         Random random = new Random();
         delay();
@@ -79,7 +86,7 @@ public class Shop {
 
     private static void delay() {
         try {
-            Thread.sleep(300L);
+            Thread.sleep(1000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

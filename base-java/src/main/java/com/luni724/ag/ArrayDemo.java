@@ -131,11 +131,27 @@ public class ArrayDemo {
     }
 
 
+
+    public static int searchInsert(int[] nums, int target) {
+
+
+
+
+        for (int i = 0; i < nums.length; i++) {
+            if (target <= nums[i]) {
+                return i;
+            }
+
+        }
+        return nums.length ;
+
+    }
+
     public static void main(String[] args) {
 
-        String s = "abababzabababa";
-        int[] ints = calculateMaxMatchLengths(s);
-        System.out.println(Arrays.toString(ints));
+        int[] nums = {1,3,5,6};
+        int i = searchInsert(nums, 7);
+        System.out.println(i);
 
 
     }

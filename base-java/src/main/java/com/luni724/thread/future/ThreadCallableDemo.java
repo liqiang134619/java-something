@@ -1,4 +1,4 @@
-package com.luni724.thread;
+package com.luni724.thread.future;
 
 import com.google.common.collect.Lists;
 
@@ -6,6 +6,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -117,6 +118,12 @@ public class ThreadCallableDemo {
             }
             return "e";
         },executorService);
+
+        /// 连接两个线程
+//        CompletableFuture<String> stringCompletableFuture5 = stringCompletableFuture4.thenCompose(fu -> CompletableFuture.supplyAsync(() -> fu + "suffix"));
+//         合并两个值
+//        CompletableFuture<String> stringCompletableFuture5 = stringCompletableFuture4.thenCombine(CompletableFuture.supplyAsync(() -> "heihei"),
+//                (s, s1) -> s + ":" + s1);
 
         List<CompletableFuture<String>> futureList = Lists.newArrayList();
 

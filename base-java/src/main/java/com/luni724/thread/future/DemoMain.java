@@ -6,6 +6,7 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 /**
+ * 新版线程 需要join操作返回结果啊
  * @author Liq
  * @date 2020/5/29
  */
@@ -39,12 +40,13 @@ public class DemoMain {
         System.out.println("=============================");
 
 
-        //  completable单个异步操作
+        //  completable异步操作
         long l1 = System.currentTimeMillis();
         List<CompletableFuture<String>> ip25s1 = list.stream()
                 .map(shop -> CompletableFuture.supplyAsync(() -> String
                 .format("%s price is %.2f ", shop.getName(), shop.getPrice("ip25s")),threadPoolExecutor))
                 .collect(Collectors.toList());
+        // 等待所有的异步操作结果返回
         List<String> collect = ip25s1.stream().map(CompletableFuture::join).collect(Collectors.toList());
 
 
