@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
@@ -137,8 +140,24 @@ public class Demo01 {
         return true;
     }
 
+    public static int countPrimes1(int n) {
+        Stream<Integer> integerStream = IntStream.rangeClosed(2, n).mapToObj(i->isPrim(i)).map(b->{
+            if(b) {
+                return 1;
+            }
+            return 0;
+        });
+        return integerStream.reduce(0, Integer::sum);
+    }
+
+    public static boolean isPrime(int n) {
+        int can = (int)Math.sqrt(n);
+        return IntStream.rangeClosed(2,can).noneMatch( i -> can % i ==0);
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(isPowerOfThree(16));
+        System.out.println(countPrimes1(20));
+
     }
 }
