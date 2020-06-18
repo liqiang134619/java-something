@@ -81,7 +81,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements TreeOp
 
 
         } else {
-            root = (root.getLeft() == null )? root.getLeft() : root.getRight();
+            root = (root.getLeft() != null )? root.getLeft() : root.getRight();
         }
         return  root;
     }
